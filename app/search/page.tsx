@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import getSongsByTitle from "@/actions/getSongsByTitle";
+import getSongsByTitleAndAuthor from "@/actions/getSongsByTitleAndAuthor";
 import SearchInput from "@/components/SearchInput";
 import SearchContent from "./components/SearchContent";
 
@@ -12,7 +12,7 @@ interface SearchProps {
 export const revalidate = 0;
 
 const Search = async ({ searchParams }: SearchProps) => {
-  const songs = await getSongsByTitle(searchParams.title);
+  const songs = await getSongsByTitleAndAuthor(searchParams.title);
 
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">

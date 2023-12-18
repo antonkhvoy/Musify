@@ -22,7 +22,7 @@ const Library: React.FC<LibraryProps> = ({
   const uploadModal = useUploadModal();
   const authModal = useAuthModal();
 
-  const onPlay = useOnPlay(songs);
+  //const onPlay = useOnPlay(songs);
 
   const onClick = () => {
     if (!user) {

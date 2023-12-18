@@ -3,12 +3,12 @@ import { cookies } from "next/headers";
 import { Song } from "@/types";
 import getSongs from "./getSongs";
 
-const getSongsByTitle = async (title: string): Promise<Song[]> => {
+const getSongsByTitleAndAuthor = async (search_value: string): Promise<Song[]> => {
   const supabase = createServerComponentClient({
     cookies: cookies
   });
 
-  if(!title) {
+  if(!search_value) {
     const allSongs = await getSongs();
     return allSongs;
   }
@@ -16,7 +16,7 @@ const getSongsByTitle = async (title: string): Promise<Song[]> => {
   const { data, error } = await supabase
     .from('songs')
     .select('*')
-    .ilike('title', `%${title}%`)
+    .or(`title.ilike.%${search_value}%, author.ilike.%${search_value}%`)
     .order('created_at', { ascending: false });
 
   if (error) {
@@ -26,4 +26,4 @@ const getSongsByTitle = async (title: string): Promise<Song[]> => {
   return (data as any) || [];
 };
 
-export default getSongsByTitle;
+export default getSongsByTitleAndAuthor;

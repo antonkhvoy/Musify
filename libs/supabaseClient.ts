@@ -33,7 +33,7 @@ export const getSongsByUserId = async (userId?: string): Promise<any> => {
   return (data as any) || [];
 };
 
-export const getSongsByTitle = async (title?: string): Promise<any> => {
+export const getSongsByTitleAndAuthor = async (title?: string): Promise<any> => {
   if (!title) {
     return [];
   }

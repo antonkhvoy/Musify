@@ -24,7 +24,7 @@ const insertSongRecord = async ({
     user_id: uuid,
     title: title,
     author: author,
-    image_path: imagePath,
+    image_path: imagePath || './public/images/music-placeholder.png',
     song_path: songPath,
   };
 
